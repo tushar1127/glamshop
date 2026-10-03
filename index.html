@@ -504,7 +504,7 @@ function startAdmin(){stopAdmin();
   unsubs.push(onSnapshot(collection(db,'entries'),sn=>{E_ent=sn.docs.map(d=>({...d.data(),id:d.id})).sort((a,b)=>(b.ts||0)-(a.ts||0));mergeE()},e=>console.warn('entries',e.code)));
   unsubs.push(onSnapshot(collection(db,'visits'),sn=>{E_vis=sn.docs.map(d=>({id:'VAUTO-'+d.id,type:'visit',d:d.id,count:d.data().count||0,note:'Auto: visitors',by:'Auto',items:[]}));mergeE()},e=>console.warn('visits',e.code)));
   if(me.admin)unsubs.push(onSnapshot(collection(db,'staff'),sn=>{STAFF=sn.docs.map(d=>({...d.data(),email:d.id}));if(view==='admin'&&tab==='users')softRender()},e=>console.warn('staff',e.code)));
-  if(me.admin&&!RP)dirty=true; /* first login: upload starter products to Firestore */ }
+  /* Do not set dirty here. Firestore must load the current products before any local edits are protected from snapshots. */ }
 function stopAdmin(){unsubs.forEach(u=>u());unsubs=[];E_ent=[];E_vis=[];E=[];STAFF=[]}
 
 /* ---- login ---- */
@@ -519,15 +519,43 @@ onAuthStateChanged(auth,async u=>{
   isAdmin=true;startAdmin();if(goAdmin){goAdmin=false;view='admin';closeP();scrollTo(0,0)}render()});
 function countVisit(){try{const k='gn_v_'+today();if(localStorage.getItem(k))return;localStorage.setItem(k,'1');setDoc(doc(db,'visits',today()),{count:increment(1)},{merge:true}).catch(()=>{})}catch(e){}}
 
-/* ---- auto-save admin changes (products, settings, headings) ---- */
+/* ---- manual-save admin changes (products, settings, headings) ---- */
 async function pushAll(){
+  // Manual-save only: write the current settings when they changed.
   const cj=sj({cfg:S.cfg,sections:S.sections});
-  if(cj!==lastC){if(cj.length>950000)throw Error('Banner / logo images are too big. Remove one banner image.');await setDoc(doc(db,'config','shop'),clean({cfg:S.cfg,sections:S.sections}));lastC=cj}
-  for(const p of S.products){const isNew=!(p.id in lastJ),d=clean(p),withStock=isNew||p._st;delete d._st;const x={...d};delete x.stock;const j0=sj(x);
-    if(!isNew&&!withStock&&lastJ[p.id]===j0)continue;
-    if(!withStock)delete d.stock;if(JSON.stringify(d).length>950000)throw Error(p.name+': photos are too big for one item. Remove a photo.');
-    const r=RPM[p.id]||{};for(const k in r)if(!(k in d)&&k!=='stock')d[k]=deleteField();
-    await setDoc(doc(db,'products',String(p.id)),d,{merge:true});lastJ[p.id]=j0;delete p._st}}
+  if(cj!==lastC){
+    if(cj.length>950000)throw Error('Banner / logo images are too big. Remove one banner image.');
+    await setDoc(doc(db,'config','shop'),clean({cfg:S.cfg,sections:S.sections}));
+    lastC=cj;
+  }
+
+  // Manual-save only: write the current product state to Firestore.
+  // We deliberately do not skip based on lastJ; this prevents stale local
+  // snapshots from causing an edited value to be skipped.
+  for(const p of S.products){
+    const d=clean(p);
+    const withStock=!!p._st || !(p.id in RPM);
+
+    delete d._st;
+
+    if(!withStock)delete d.stock;
+
+    if(JSON.stringify(d).length>950000)
+      throw Error(p.name+': photos are too big for one item. Remove a photo.');
+
+    const r=RPM[p.id]||{};
+    for(const k in r){
+      if(!(k in d)&&k!=='stock')d[k]=deleteField();
+    }
+
+    await setDoc(doc(db,'products',String(p.id)),d,{merge:true});
+
+    // Keep local Firestore mirrors synchronized after a confirmed write.
+    RPM[p.id]=clean({...RPM[p.id],...d});
+    lastJ[p.id]=sj(strip(p));
+    delete p._st;
+  }
+}
 window.saveChanges = async function(){
 
   if(!me){
