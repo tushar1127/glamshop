@@ -166,9 +166,77 @@ openP(`<h2>${id?'Edit':'New'} product</h2><div id="pv" class="img" style="border
 <span class="mu">Name</span><input id="e_n" value="${esc(p.name)}"><span class="mu">Category</span><select id="e_c">${cats().slice(1).map(c=>`<option ${c===p.cat?'selected':''}>${c}</option>`).join('')}</select>
 <span class="mu">Selling price ₹</span><input id="e_p" type="number" value="${p.price}"><span class="mu">MRP ₹</span><input id="e_m" type="number" value="${p.mrp}"><span class="mu">Opening stock (set once)</span><input id="e_s" type="number" value="${p.open??p.stock}" ${used(p.id)?'disabled':''}><div class="mu">${used(p.id)?'Locked — this item already has entries. Stock now changes only through Purchase, Sale and Wastage entries.':'Enter the stock you already have today. After this, add new stock under Entries → Purchase.'}</div><span class="mu">Emoji (used if no photo)</span><input id="e_e" value="${p.emoji}">
 <span class="mu">Show under heading</span><select id="e_h"><option value="">— none —</option>${S.sections.map(s=>`<option value="${s.id}" ${s.id===p.sec?'selected':''}>${esc(s.title)}</option>`).join('')}</select><button class="btn" style="width:100%;margin-top:8px" onclick="saveP()">Save</button>`)}
-function saveP(){if(!can("prod_edit"))return;const p=AP_p;p.name=$('e_n').value.trim();if(!p.name)return alert('Name required');p.cat=$('e_c').value;p.price=+$('e_p').value;p.mrp=+$('e_m').value||p.price;if(!$('e_s').disabled){const v=+$('e_s').value||0;p.open=v;p.base=v;p.stock=v;p._st=1}p.emoji=$('e_e').value||'✨';p.desc=$('e_d')?$('e_d').value.trim():(p.desc||'');
-const h=$('e_h').value;if(h)p.sec=h;else delete p.sec;delete p.trend;
-if(p.isNew){delete p.isNew;S.products.push(p);if(p.stock)mvAdd(p,p.stock,'Purchase','Opening stock')}recalc();ch();closeP();render()}
+function saveP(){
+
+  if(!can("prod_edit")) return;
+
+  const p = AP_p;
+
+  p.name = $('e_n').value.trim();
+
+  if(!p.name){
+    alert("Name required");
+    return;
+  }
+
+  p.cat = $('e_c').value;
+  p.price = +$('e_p').value;
+  p.mrp = +$('e_m').value || p.price;
+
+  if(!$('e_s').disabled){
+
+    const v = +$('e_s').value || 0;
+
+    p.open = v;
+    p.base = v;
+    p.stock = v;
+
+    // Tell Firebase this product must be written
+    p._st = 1;
+  }
+
+  p.emoji = $('e_e').value || '✨';
+
+  p.desc = $('e_d')
+    ? $('e_d').value.trim()
+    : (p.desc || '');
+
+  const h = $('e_h').value;
+
+  if(h){
+    p.sec = h;
+  }else{
+    delete p.sec;
+  }
+
+  delete p.trend;
+
+  if(p.isNew){
+
+    delete p.isNew;
+
+    S.products.push(p);
+
+    if(p.stock){
+      mvAdd(
+        p,
+        p.stock,
+        'Purchase',
+        'Opening stock'
+      );
+    }
+  }
+
+  recalc();
+
+  // ONLY mark as changed.
+  // It does NOT save automatically.
+  dirty = true;
+
+  closeP();
+
+  render();
+}
 function heads(){const a=S.sections;return `<p class="mu">Headings are the section titles on your homepage, e.g. "🔥 Trending on Instagram". Rename, reorder or add new ones (emoji allowed). Pick a heading inside each product's Edit screen, or in the Excel sheet.</p>`+a.map((s,i)=>`<div class="row"><input value="${esc(s.title)}" onchange="S.sections[${i}].title=this.value;ch()"><button class="btn o s" onclick="mvSec(${i},-1)">↑</button><button class="btn o s" onclick="mvSec(${i},1)">↓</button><button class="btn o s" onclick="delSec(${i})">✕</button></div>`).join('')+`<button class="btn" onclick="S.sections.push({id:'s'+Date.now(),title:'New heading'});ch();render()">+ Add heading</button><h2>Title of the main "all products" section</h2><input value="${esc(C().allTitle)}" onchange="S.cfg.allTitle=this.value;ch()">`}
 function mvSec(i,d){const a=S.sections,j=i+d;if(j<0||j>=a.length)return;[a[i],a[j]]=[a[j],a[i]];ch();render()}
 function delSec(i){const s=S.sections.splice(i,1)[0];S.products.forEach(p=>{if(p.sec===s.id)delete p.sec});ch();render()}
