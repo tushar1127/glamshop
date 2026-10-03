@@ -451,7 +451,36 @@ async function pushAll(){
     if(!withStock)delete d.stock;if(JSON.stringify(d).length>950000)throw Error(p.name+': photos are too big for one item. Remove a photo.');
     const r=RPM[p.id]||{};for(const k in r)if(!(k in d)&&k!=='stock')d[k]=deleteField();
     await setDoc(doc(db,'products',String(p.id)),d,{merge:true});lastJ[p.id]=j0;delete p._st}}
-setInterval(async()=>{if(!dirty||pushing||!me)return;pushing=true;dirty=false;try{await pushAll()}catch(e){fbErr(e);STALE=false}pushing=false},1200);
+async function saveChanges(){
+  if(!me){
+    alert("Please login as admin first.");
+    return;
+  }
+
+  if(pushing){
+    alert("Save is already in progress.");
+    return;
+  }
+
+  pushing = true;
+
+  try{
+    await pushAll();
+
+    dirty = false;
+    STALE = false;
+
+    alert("✅ Changes saved successfully!");
+    render();
+
+  }catch(e){
+    console.error(e);
+    fbErr(e);
+
+  }finally{
+    pushing = false;
+  }
+}
 
 /* ---- entries (sale / purchase / wastage / visitors) ---- */
 FBX.add=async e=>{try{const b=writeBatch(db),{id,...r}=e;r.ts=Date.now();b.set(doc(db,'entries',id),r);
