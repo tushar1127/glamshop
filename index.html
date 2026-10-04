@@ -101,7 +101,7 @@ function render(){document.title=C().name+' – Jewellery';document.querySelecto
 $('cc').textContent=Object.values(cart).reduce((a,b)=>a+b,0);
 const b=$('admBtn');b.style.display=isAdmin?'':'none';b.textContent=view==='admin'?'← View shop':'⚙ Admin';b.onclick=()=>{view=view==='admin'?'shop':'admin';render();scrollTo(0,0)};
 $('app').innerHTML=view==='orders'?ordersPage():view==='order'?orderPage():view==='shop'||!isAdmin?shop():admin()}
-const pic=p=>imgOf(p)?`<img src="${imgOf(p)}" alt="">`:p.emoji;
+const pic=p=>imgOf(p)?`<img src="${imgOf(p)}" alt="${esc(p.name)}" loading="lazy" decoding="async">`:p.emoji;
 function card(p){return `<div class="card"><div class="img">${pic(p)}${p.stock<=5&&p.stock>0?`<span class="tag">Only ${p.stock} left</span>`:p.trend?'<span class="tag">🔥 Trending</span>':''}</div><div class="info"><b>${p.name}</b><div class="pr"><b style="display:inline">${inr(p.price)}</b><s>${inr(p.mrp)}</s></div><button class="btn s" ${p.stock<1?'disabled':''} onclick="add(${p.id})">${p.stock<1?'Sold out':'Add to cart'}</button></div></div>`}
 function shop(){const l=S.products.filter(p=>cat==='All'||p.cat===cat),t=S.products.filter(p=>p.trend);
 return `<div class="hero"><h1>${C().banner}</h1><div>Free shipping above ${inr(C().freeAbove)} · UPI · COD available</div></div>
