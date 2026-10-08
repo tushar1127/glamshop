@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Suvarnam – Jewellery &amp; Accessories</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fff8f6;--card:#fff;--tx:#2a1f24;--mu:#7a6a70;--ac:#d6336c;--bd:#f0dde2;--ok:#2b8a3e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1216;--card:#261b21;--tx:#f7eef1;--mu:#b9a5ad;--bd:#3a2a32}}
@@ -68,12 +71,75 @@ label.pay span b{display:block}
   content-visibility: auto;
   contain-intrinsic-size: auto 280px;
 }
+:root{--bg:#f7f7f4;--card:#fff;--tx:#202722;--mu:#717a73;--ac:#a53b55;--bd:#e3e6e0;--ok:#32835a;color-scheme:light}
+body{font-family:'DM Sans',sans-serif;background:linear-gradient(180deg,#f2f4ef 0,#fff 360px);color:var(--tx);line-height:1.55}
+header{padding:12px max(22px,calc((100vw - 1240px)/2));min-height:72px;gap:20px;box-shadow:0 2px 12px rgba(26,39,29,.04)}
+.logo{font-family:'Playfair Display',serif;font-size:25px;letter-spacing:0;color:#263c30}
+.header-actions{display:flex;align-items:center;gap:10px}
+.nav-link{color:var(--tx);font-weight:600;text-decoration:none;padding:8px 10px;border-radius:6px}
+.nav-link:hover{background:#f0f2ed}
+button,select,input{font-family:'DM Sans',sans-serif}
+.btn{border-radius:6px;padding:10px 17px;background:#263c30;transition:background .18s ease,transform .18s ease}
+.btn:hover{background:#355442;transform:translateY(-1px)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn.o{background:transparent;border:1px solid var(--bd);color:var(--tx)}
+.btn.o:hover{background:#f2f4ef}
+.btn.s{padding:7px 11px;border-radius:5px}
+main{max-width:1240px;padding:28px 24px 48px;min-height:55vh}
+.hero:not(.hasimg){min-height:260px;display:flex;flex-direction:column;justify-content:flex-end;padding:34px 40px;background:#263c30;border-radius:8px;margin:0 0 34px;overflow:hidden;position:relative}
+.hero:not(.hasimg)::before{content:'';position:absolute;inset:0 0 0 auto;width:38%;border-left:1px solid rgba(255,255,255,.13);background:repeating-linear-gradient(135deg,transparent 0 22px,rgba(255,255,255,.035) 22px 23px)}
+.hero .ht{z-index:1}
+.hero h1{font:600 42px/1.12 'Playfair Display',serif;max-width:650px;margin:0 0 12px}
+.hero:not(.hasimg) .ht>div{font-size:14px;color:rgba(255,255,255,.82)}
+.hero.hasimg{border-radius:8px;margin-bottom:34px}
+.hero.hasimg .ht{min-height:260px;padding:32px 40px}
+h2{font:600 24px/1.25 'Playfair Display',serif;margin:30px 0 14px}
+.grid{grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:18px}
+.card{border:1px solid #e8e9e5;border-radius:7px;box-shadow:0 3px 12px rgba(29,39,32,.035);transition:transform .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(29,39,32,.09)}
+.img{height:220px;background:#f1f1ec}
+.info{padding:14px}
+.info b{font-size:14px}
+.info .pr{margin:8px 0 12px}
+.tag{border-radius:4px}
+.chips,.tabs{gap:8px;padding:4px 0 14px}
+.chip{border-radius:5px;padding:8px 13px;font-size:13px}
+.chip.on{background:#263c30;border-color:#263c30}
+input,select,textarea.t{border-radius:5px;background:#fff;border-color:#dfe3dd;padding:11px}
+.panel{align-items:center;padding:20px}
+.sheet{border-radius:8px;max-height:min(90vh,850px);box-shadow:0 18px 60px rgba(12,20,15,.24)}
+.stat,.ocard{border-radius:7px;box-shadow:0 2px 10px rgba(29,39,32,.035)}
+.ocard{padding:16px}
+.cos{padding:14px 0}
+footer{padding:28px 16px 8px}
+.legal{padding-bottom:34px}
+.legal nav a{text-decoration:none}
+.live{color:#32835a}
+.logo{text-decoration:none}
+.route-message{max-width:720px;margin:42px auto;padding:32px 0}
+.route-message h1,.page-title,.admin-top h1{font:600 34px/1.15 'Playfair Display',serif;margin:0 0 16px}
+.crumb{font-size:13px;color:var(--mu);margin:0 0 22px}.crumb a{color:var(--mu);text-decoration:none}.crumb a:hover{color:var(--ac)}
+.product-detail{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:56px;align-items:start}
+.product-main-image{aspect-ratio:1/1;display:grid;place-items:center;overflow:hidden;background:#f0f1ed;border-radius:7px}.product-main-image img{width:100%;height:100%;object-fit:contain}.product-main-image>span{font-size:100px}
+.product-thumbs button{width:60px;height:60px;padding:0;border:2px solid transparent;border-radius:5px;overflow:hidden;background:none;cursor:pointer}.product-thumbs button.on{border-color:var(--ac)}.product-thumbs img{width:100%;height:100%;object-fit:cover}
+.product-copy{padding:20px 0}.product-copy .eyebrow{font-size:12px;text-transform:uppercase;color:var(--mu);font-weight:700;margin:0 0 10px}.product-copy h1{font:600 38px/1.15 'Playfair Display',serif;margin:0 0 18px}.detail-price{display:flex;align-items:center;gap:12px}.detail-price b{font-size:25px}.detail-price s,.detail-price span{color:var(--mu);font-size:14px}.stock-note{font-size:13px;color:#32835a;margin:12px 0}.stock-note.out{color:#c03535}.product-description{max-width:52ch;line-height:1.8;margin:22px 0}.product-actions{display:flex;align-items:center;gap:14px}.product-actions .btn{min-width:190px}.product-policies{border-top:1px solid var(--bd);margin-top:30px}.product-policies>div{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid var(--bd);font-size:13px}.product-policies span{color:var(--mu);text-align:right}
+.product-card{color:inherit;text-decoration:none}.product-card .btn{display:inline-block;text-align:center}.product-card .info>b{min-height:2.6em;line-height:1.35}
+.page-title{margin-bottom:24px}.cart-layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:50px;align-items:start}.cart-line{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:20px;padding:18px 0;border-bottom:1px solid var(--bd)}.cart-product{display:flex;align-items:center;gap:14px;color:inherit;text-decoration:none}.cart-product img{width:76px;height:76px;object-fit:cover;border-radius:5px;background:#f1f1ec}.cart-product span{display:grid;gap:4px}.cart-product small{color:var(--mu)}.qty-control{display:flex;align-items:center;gap:12px}.qty-control .btn{min-width:34px}.cart-summary{background:#f7f8f5;border:1px solid var(--bd);border-radius:7px;padding:20px}.cart-summary h2{font-size:21px;margin:0 0 16px}.cart-summary .btn{width:100%;margin-top:14px}.continue-link{display:inline-block;margin-top:18px}
+.checkout-page{max-width:660px;margin:16px auto 32px;padding:24px;background:#fff;border:1px solid var(--bd);border-radius:7px;box-shadow:0 5px 24px rgba(29,39,32,.06)}.checkout-page .coh{border-bottom:1px solid var(--bd);padding-bottom:14px;margin-bottom:14px}.checkout-page .cos{padding:14px 0}.checkout-page .cot{letter-spacing:.7px}.admin-top{display:flex;align-items:end;justify-content:space-between;gap:20px;border-bottom:1px solid var(--bd);padding:8px 0 18px}.admin-top .mu{margin:0}.admin-top h1{margin:0}.admin-tabs{margin:16px 0 24px;border-bottom:1px solid var(--bd)}.admin-tabs .chip{text-decoration:none;color:var(--tx)}.admin-tabs .chip.on{color:#fff}
+@media(max-width:640px){
+  header{padding:10px 14px;min-height:62px;gap:8px}.logo{font-size:21px}.header-actions{gap:4px}.nav-link{padding:7px 6px;font-size:13px}#trkBtn{font-size:0}#trkBtn::after{content:'Orders';font-size:13px}
+  main{padding:20px 15px 36px}.hero:not(.hasimg){min-height:220px;padding:25px 22px;margin-bottom:28px}.hero:not(.hasimg)::before{width:24%}.hero h1{font-size:34px}.hero.hasimg .ht{min-height:220px;padding:24px}
+  h2{font-size:22px;margin-top:26px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.img{height:auto;aspect-ratio:1/1}.info{padding:11px}.info .pr{font-size:14px}.card .btn{padding:8px 6px}
+  .panel{padding:0}.sheet{max-height:92vh;border-radius:12px 12px 0 0}.hero.hasimg{margin-bottom:28px}
+  .route-message{margin:25px 0;padding:22px 0}.route-message h1,.page-title,.admin-top h1{font-size:29px}.product-detail{grid-template-columns:1fr;gap:18px}.product-copy{padding:4px 0}.product-copy h1{font-size:31px}.product-policies>div{align-items:flex-start}.cart-layout{grid-template-columns:1fr;gap:24px}.cart-line{grid-template-columns:minmax(0,1fr) auto;gap:10px}.cart-line>b{grid-column:2;grid-row:2;text-align:right}.cart-product img{width:62px;height:62px}.cart-summary{padding:16px}.checkout-page{margin:0;padding:18px 15px;border:0;box-shadow:none}.admin-top{display:block}.admin-top>p{margin-top:10px}.admin-tabs{overflow:auto;white-space:nowrap}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
 </style>
 <!-- Excel import/export library (needs internet) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <body>
-<header><div class="logo">✨ Suvarnam</div><div><button class="btn o s" id="admBtn" style="display:none"></button> <button class="btn o s" id="trkBtn" onclick="goOrders()">📦 Your Orders</button> <button class="btn s" onclick="openCart()">🛍 Cart (<span id="cc">1</span>)</button></div></header>
+<header><a class="logo" href="/" onclick="routeLink(event,'/')">Suvarnam</a><div class="header-actions"><a class="nav-link" href="/" onclick="routeLink(event,'/')">Shop</a><button class="btn o s" id="admBtn" style="display:none"></button> <button class="btn o s" id="trkBtn" onclick="goOrders()">Your Orders</button> <button class="btn s" onclick="goCart()">Cart (<span id="cc">0</span>)</button></div></header>
 <main id="app"></main>
 <footer id="ft"></footer>
 <section class="legal"><p><b>About Suvarnam:</b> We are an online store for trendy earrings, necklaces, key chains and fashion accessories, delivered across India. All prices are in INR. Pay by UPI, card, net banking, wallet or Cash on Delivery. Questions: <a href="mailto:tk6001127@gmail.com">tk6001127@gmail.com</a></p><nav><a href="contact-us.html">Contact Us</a> · <a href="privacy-policy.html">Privacy Policy</a> · <a href="terms-and-conditions.html">Terms &amp; Conditions</a> · <a href="refund-policy.html">Refund &amp; Cancellation</a> · <a href="shipping-policy.html">Shipping Policy</a></nav><p><small>© Suvarnam</small></p></section>
@@ -83,10 +149,10 @@ label.pay span b{display:block}
 
 const CATS=['All','Earrings','Necklaces','Keychains','Rings','Bracelets','Hair Accessories'];
 const PM={upi:'UPI (GPay / PhonePe / Paytm)',card:'💳 Credit / Debit Card',nb:'🏦 Net Banking',wallet:'👛 Wallets',cod:'💵 Cash on Delivery'};
-let S=JSON.parse(document.getElementById('seed').textContent),cart={},cat='All',view='shop',tab='prod',isAdmin=false,dirty=false,AP=null,orders=[];
+let S=JSON.parse(document.getElementById('seed').textContent),cart=(()=>{try{const saved=JSON.parse(localStorage.getItem('gn_cart'));return saved&&typeof saved==='object'&&!Array.isArray(saved)?saved:{}}catch(e){return {}}})(),cat='All',view='shop',tab='prod',isAdmin=false,dirty=false,AP=null,orders=[];S.products=[];
 try{orders=JSON.parse(localStorage.getItem('gn_o'))||[]}catch(e){}
 const $=id=>document.getElementById(id),inr=n=>'₹'+Number(n).toLocaleString('en-IN'),P=id=>S.products.find(p=>p.id==id),C=()=>S.cfg;
-const ch=()=>{dirty=true};window.alert=m=>openP('<p>'+String(m).replace(/</g,'&lt;')+'</p><button class="btn" style="width:100%" onclick="closeP()">OK</button>');
+let editVersion=0;const ch=()=>{dirty=true;editVersion++};window.alert=m=>openP('<p>'+String(m).replace(/</g,'&lt;')+'</p><button class="btn" style="width:100%" onclick="closeP()">OK</button>');
 
 const HASH=3686256759165316;
 function cy(s){let h1=0xdeadbeef,h2=0x41c6ce57;for(let i=0;i<s.length;i++){const c=s.charCodeAt(i);h1=Math.imul(h1^c,2654435761);h2=Math.imul(h2^c,1597334677)}h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);return 4294967296*(2097151&h2)+(h1>>>0)}
@@ -94,7 +160,7 @@ function unlock(){openP('<h2>Admin login</h2><input id="apw" type="password" pla
 function chkPw(){if(cy($('apw').value)===HASH){isAdmin=true;view='admin';closeP();render();scrollTo(0,0)}else $('aerr').textContent='Wrong password'}
 let taps=0,tt;document.addEventListener('click',e=>{if(!e.target.closest('.logo'))return;taps++;clearTimeout(tt);tt=setTimeout(()=>taps=0,1500);if(taps>=5){taps=0;if(!isAdmin)unlock();else{view='admin';render()}}});
 addEventListener('hashchange',()=>{if(location.hash==='#admin')unlock()});if(location.hash==='#admin')setTimeout(unlock,300);
-const subtotal=()=>Object.entries(cart).reduce((s,[i,q])=>s+P(i).price*q,0);
+const subtotal=()=>Object.entries(cart).reduce((s,[i,q])=>s+(P(i)?.price||0)*q,0);
 const shipFee=m=>!subtotal()?0:m==='exp'?C().expFee:(subtotal()>=C().freeAbove?0:C().stdFee);
 function render(){document.title=C().name+' – Jewellery';document.querySelector('.logo').textContent='✨ '+C().name;
 
@@ -108,11 +174,11 @@ return `<div class="hero"><h1>${C().banner}</h1><div>Free shipping above ${inr(C
 ${t.length?`<h2>🔥 Trending on Instagram</h2><div class="grid">${t.map(card).join('')}</div>`:''}
 <h2>Shop all</h2><div class="chips">${CATS.map(c=>`<span class="chip ${c===cat?'on':''}" onclick="cat='${c}';render()">${c}</span>`).join('')}</div>
 <div class="grid">${l.map(card).join('')||'<p class="mu">Nothing here yet.</p>'}</div>`}
-function add(id){cart[id]=Math.min((cart[id]||0)+1,P(id).stock);render();openCart()}
-function openP(h){$('sheet').innerHTML=h;$('panel').classList.add('on')}function closeP(){$('panel').classList.remove('on')}
+function add(id){cart[id]=Math.min((cart[id]||0)+1,P(id).stock);saveCart();render();openCart()}
+function openP(h){if(routePage==='checkout'){$('app').innerHTML=`<section class="checkout-page">${h}</section>`;$('panel').classList.remove('on');return}$('sheet').innerHTML=h;$('panel').classList.add('on')}function closeP(){$('panel').classList.remove('on')}
 function openCart(){const e=Object.entries(cart);
 openP(`<h2>Your cart</h2>${e.length?e.map(([i,q])=>`<div class="row"><span>${P(i).emoji} ${P(i).name}<br><span class="mu">${inr(P(i).price)}</span></span><span><button class="btn o s" onclick="qty(${i},-1)">−</button> ${q} <button class="btn o s" onclick="qty(${i},1)">+</button></span></div>`).join('')+`<div class="row"><span>Subtotal</span><b>${inr(subtotal())}</b></div><div class="row"><span>Standard delivery</span><b>${shipFee('std')?inr(shipFee('std')):'FREE'}</b></div><button class="btn" style="width:100%" onclick="checkout()">Checkout</button>`:'<p class="mu">Your cart is empty.</p>'}<button class="btn o" style="width:100%;margin-top:8px" onclick="closeP()">Close</button>`)}
-function qty(i,d){cart[i]=(cart[i]||0)+d;if(cart[i]<=0)delete cart[i];else cart[i]=Math.min(cart[i],P(i).stock);render();openCart()}
+function qty(i,d){cart[i]=(cart[i]||0)+d;if(cart[i]<=0)delete cart[i];else cart[i]=Math.min(cart[i],P(i).stock);saveCart();if(routePage==='checkout')checkout();else render()}
 function checkout(){const on=Object.keys(PM).filter(k=>C().pay[k]);
 openP(`<h2>Delivery details</h2><input id="n" placeholder="Full name"><input id="ph" placeholder="Mobile number" inputmode="numeric"><input id="ad" placeholder="Full address"><input id="pin" placeholder="Pincode" inputmode="numeric">
 <label class="pay"><input type="radio" name="sh" value="std" checked onchange="pmChg()">🚚 Standard (${shipFee('std')?inr(shipFee('std')):'FREE'})</label><label class="pay"><input type="radio" name="sh" value="exp" onchange="pmChg()">⚡ Express (${inr(C().expFee)})</label>
@@ -192,12 +258,13 @@ function ent(){const al=['sale','purchase','waste','visit'].filter(can);if(!al.i
 let h=`<div class="tabs">${[['sale','🧾 Sale'],['purchase','📥 Purchase'],['waste','🗑 Wastage'],['visit','👥 Visitors']].filter(x=>can(x[0])).map(([k,l])=>`<span class="chip ${k===etype?'on':''}" onclick="etype='${k}';F.items=[];render()">${l}</span>`).join('')}</div><span class="mu">Date (you can enter past dates)</span>${fi('d','','date')}`;
 if(etype==='visit')return h+fi('count','Visitors / link taps that day','number')+fi('note','Note (optional)')+'<button class="btn" style="width:100%" onclick="saveEntry()">Save visitors</button><p class="mu">Take this number from Instagram Insights (profile visits / link taps). A static page cannot count visitors by itself.</p>'+recent();
 if(sale)h+='<textarea id="wa_txt" rows="3" placeholder="Paste the WhatsApp order message here to fill this sale automatically" style="width:100%;padding:9px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:inherit"></textarea><button class="btn o s" onclick="fillWA()">⚡ Fill from WhatsApp order</button>'+fi('cust','Customer name / Instagram ID')+fi('phone','Phone (optional)','tel');
-if(pur)h+=fi('sup','Supplier name')+fi('bill','Bill / invoice no.');
+if(pur)h+=fi('sup','Supplier name')+fi('bill','Supplier bill number (enter manually if supplied)');
 if(etype==='waste')h+=`<select onchange="F.reason=this.value">${['Damaged','Lost','Defective','Tarnished','Other'].map(r=>`<option ${F.reason===r?'selected':''}>${r}</option>`).join('')}</select>`;
-h+=`<div class="row"><select id="l_p">${o}</select><input id="l_q" type="number" value="1" style="width:70px">${pur?'<input id="l_c" type="number" placeholder="Cost ₹" style="width:90px">':''}<button class="btn s" onclick="addLine()">Add</button></div>`+F.items.map((d,i)=>`<div class="row"><span>${esc(d.name)} ×${d.q} @ ${inr(pur?d.cost:d.price)}</span><button class="btn o s" onclick="F.items.splice(${i},1);render()">✕</button></div>`).join('');
+h+=`<div class="row"><select id="l_p" ${pur?'onchange="setEntryProduct()"':''}>${o}</select><input id="l_q" type="number" value="1" style="width:70px">${pur?`<input id="l_c" type="number" placeholder="Unit cost ₹" value="${S.products.find(p=>!p.off)?.cost||''}" style="width:110px">`:''}<button class="btn s" onclick="addLine()">Add</button></div>`+F.items.map((d,i)=>`<div class="row"><span>${esc(d.name)} ×${d.q} @ ${inr(pur?d.cost:d.price)}</span><button class="btn o s" onclick="F.items.splice(${i},1);render()">✕</button></div>`).join('');
 if(etype!=='waste')h+=`<div class="row"><b>Items total</b><b>${inr(dTotal())}</b></div>`+(sale?fi('ship','Delivery / COD charges ₹ (optional)','number')+fi('disc','Discount ₹ (optional)','number'):'')+`<select onchange="F.mode=this.value">${['Cash','UPI','Card','Online','COD','Credit'].map(m=>`<option ${F.mode===m?'selected':''}>${m}</option>`).join('')}</select>`+fi('paid','Amount paid now ₹ (blank = full; Credit / COD = 0)','number');
 h+=fi('note','Note (optional)')+`<button class="btn" style="width:100%" onclick="saveEntry()">Save ${sale?'sale':pur?'purchase':'wastage'}</button>`+(pur?'<p class="mu">New item? Add it under Products first (opening stock 0), then enter the purchase.</p>':'');
 return h+recent()}
+function setEntryProduct(){const product=P($('l_p').value);if(etype==='purchase'&&$('l_c'))$('l_c').value=product?.cost||''}
 /* stock = opening + purchases - sales - wastage */
 function net(id){return E.reduce((a,e)=>a+e.items.filter(i=>i.id===id).reduce((b,i)=>b+(e.type==='purchase'?i.q:-i.q),0),0)}
 function recalc(){if(FB)return;S.products.forEach(p=>{p.stock=(p.base!==undefined?p.base:(p.open||0))+net(p.id)})}
@@ -214,7 +281,7 @@ const it=items.reduce((a,x)=>a+x.q*x.price,0),mode=/Cash on Delivery|COD/i.test(
 F={...F,items,cust:g(/^Name:/i),phone:g(/^Phone:/i),ship:tot>it?tot-it:'',disc:'',mode,paid:mode==='COD'?'0':'',ref:id,note:'WhatsApp order '+id+'. '+g(/^Address:/i)};
 render();if(miss.length)alert('These items were not found and were skipped: '+miss.join(', '))}
 function recent(){return ''+`<h2>Recent entries</h2><input placeholder="🔎 Search by Order ID, customer or phone" value="${esc(QS)}" onchange="QS=this.value.trim().toLowerCase();render()">`+(entList().map(e=>`<div class="row"><span><b>${esc(e.id)}</b> · ${e.d} · ${{sale:'Sale',purchase:'Purchase',waste:'Waste',visit:'Visitors'}[e.type]} · ${esc(e.cust||e.sup||e.reason||(e.type==='visit'?e.count+' visitors':'-'))}<br><span class="mu">${esc(its(e))}${e.total!=null?' · '+inr(e.total):''}${e.due>0?' · due '+inr(e.due):''}${e.payId?' · 💳 '+esc(e.payId):''}${FB&&e.by==='Website'?' · 📦 '+(e.status||'Placed'):''}</span></span><span>${MGR(e)}${e.due>0&&can('entry_edit')?`<button class="btn s" onclick="settle('${e.id}')">Paid</button> `:''}${can('entry_edit')?`<button class="btn o s" onclick="delE('${e.id}')">${delId===e.id?'Sure?':'Delete'}</button>`:''}</span></div>`).join('')||'<p class="mu">No entries yet.</p>')+'<p class="mu">Entries are saved in this browser. Download the Excel report regularly as a backup. Stock = opening stock + purchases − sales − wastage. Deleting an entry updates stock automatically.</p>'}
-function addLine(){const p=P($('l_p').value),q=+$('l_q').value,pur=etype==='purchase',c=pur?+$('l_c').value:0;if(!p||q<1)return alert('Choose an item and quantity.');if(pur&&!(c>0))return alert('Enter the purchase cost per piece.');
+function addLine(){const p=P($('l_p').value),q=+$('l_q').value,pur=etype==='purchase',c=pur?(+$('l_c').value||+p?.cost||0):0;if(!p||q<1)return alert('Choose an item and quantity.');if(pur&&!(c>0))return alert('Enter the purchase cost per piece.');
 const e=F.items.find(d=>d.id===p.id);if(!pur&&(e?e.q:0)+q>p.stock)return alert('Only '+p.stock+' in stock.');e?(e.q+=q,pur&&(e.cost=c)):F.items.push({id:p.id,name:p.name,q,price:p.price,cost:c});render()}
 function saveEntry(){if(!can(etype))return alert("You do not have permission for this entry type.");
 if(etype==='visit'){if(!F.d)return alert('Choose a date.');if(F.count===undefined||F.count===''||!(+F.count>=0))return alert('Enter the number of visitors.');const ve={id:FB?'':localId('visit'),type:'visit',d:F.d,count:+F.count,note:F.note||'',by:me?me.name:'',items:[]};if(FB){FBX.add(ve);return}E.unshift(ve);saveE();F={d:F.d,items:[],mode:'Cash'};ch();render();return alert('Visitors saved.')}if(!F.items.length)return alert('Add at least one item.');if(!F.d)return alert('Choose a date.');
@@ -257,7 +324,7 @@ if(sid)p.sec=sid;else delete p.sec;const st=String(x.Status||'').toLowerCase();i
 recalc();ch();render();alert(`Import done: ${a} new, ${u} updated. Then download index.html and upload it to Netlify.`)}catch(e){alert('Could not read this file. Please use the downloaded template format.')}inp.value=''};r.readAsArrayBuffer(f)}
 const RIGHTS=[['prod_edit','Add / edit products, prices & photos'],['prod_status','Activate / deactivate items'],['menu_excel','Import / export menu (Excel)'],['headings','Manage homepage headings'],['sale','Enter sales'],['purchase','Enter purchases'],['waste','Enter wastage'],['entry_edit','Delete entries / mark payments received'],['report','View reports'],['report_xl','Download Excel reports'],['visit','Enter visitor counts'],['settings','Store, delivery & payment settings']];
 let me=null,UE=null;
-const can=k=>!!me&&!!(me.admin||(me.rights||{})[k]);
+const can=k=>!!me&&!!(me.admin||(me.rights||{})[k])&&(!FB||window.storeReady!==false);
 function logout(){me=null;isAdmin=false;view='shop';render();scrollTo(0,0)}
 function unlock(){openP('<h2>Login</h2><input id="au" placeholder="Username" value="admin" autocapitalize="none" autocomplete="off"><input id="apw" type="password" placeholder="Password" autocomplete="off" onkeydown="if(event.key===\'Enter\')chkPw()"><button class="btn" style="width:100%" onclick="chkPw()">Login</button><div id="aerr" class="mu" style="color:#e03131"></div>');setTimeout(()=>{const i=$('apw');i&&i.focus()},100)}
 function chkPw(){const un=($('au').value||'admin').trim().toLowerCase(),pw=$('apw').value,d=LS('gn_draft',null);let who=null;
@@ -265,9 +332,9 @@ if(un==='admin'){if(cy(pw)===(S.cfg.adminHash||HASH)||(d&&d.cfg&&d.cfg.adminHash
 else{const all=[...((d&&d.users)||[]),...(S.users||[])],u=all.find(x=>x.user===un&&x.active!==false&&x.hash===cy(un+'|'+pw));if(u)who={name:u.name,rights:u.rights||{}}}
 if(!who){$('aerr').textContent='Wrong username or password';return}
 me=who;isAdmin=true;if(d&&d.products){S=d;fixS();dirty=true}migrate();view='admin';closeP();render();scrollTo(0,0)}
-function admin(){const T=[['prod','🛍 Products',can('prod_edit')||can('prod_status')||can('menu_excel')],['heads','🏷 Headings',can('headings')],['ent','📝 Entries',can('sale')||can('purchase')||can('waste')||can('visit')],['rep','📊 Report',can('report')],['set','⚙ Settings',can('settings')],['users','👥 Users',me.admin]].filter(t=>t[2]);
+function admin(){const T=[['prod','Products',can('prod_edit')||can('prod_status')||can('menu_excel')],['heads','Headings',can('headings')],['ent','Entries',can('sale')||can('purchase')||can('waste')||can('visit')],['rep','Reports',can('report')],['set','Settings',can('settings')],['users','Users',me.admin]].filter(t=>t[2]);
 if(!T.some(t=>t[0]===tab))tab=T.length?T[0][0]:'';
-return `<p class="mu">Logged in as <b>${esc(me.name)}</b>${me.admin?' (Admin)':''} · <a href="#" onclick="logout();return false">Log out</a></p>`+(me.admin?(FB?(dirty?'<p class="mu">Saving…</p>':'<p class="mu">✅ Live — changes save instantly and sync to all customers in real time.</p>'):dirty?`<div class="ban">You have unsaved changes. <button class="btn s" onclick="publish()">⬇ Download updated index.html</button></div>`:'<p class="mu">Product, user, heading, logo and delivery changes reach customers only after you press <b>Download updated index.html</b> and upload that file to Netlify.</p>'):'')+`<div class="tabs">${T.map(([k,l])=>`<span class="chip ${k===tab?'on':''}" onclick="tab='${k}';render()">${l}</span>`).join('')}</div>`+(T.length?({prod:prodTab,heads,ent,rep:repTab,set:settings,users}[tab])():'<p class="mu">No rights assigned yet. Please ask the admin.</p>')}
+return `<div class="admin-top"><div><p class="mu">Store administration</p><h1>${T.find(t=>t[0]===tab)?.[1]||'Administration'}</h1></div><p class="mu">Signed in as <b>${esc(me.name)}</b>${me.admin?' · Admin':''} · <a href="#" onclick="logout();return false">Log out</a></p></div>`+(me.admin?(FB?(dirty?'<p class="mu">Saving changes…</p>':'<p class="mu">Live sync is active.</p>'):dirty?`<div class="ban">Changes are ready. <button class="btn s" onclick="publish()">Download updated site</button></div>`:'<p class="mu">Changes are published when you download and upload the updated site.</p>'):'')+`<nav class="tabs admin-tabs">${T.map(([k,l])=>`<a class="chip ${k===tab?'on':''}" href="${adminPath(k)}" onclick="routeLink(event,'${adminPath(k)}')">${l}</a>`).join('')}</nav>`+(T.length?({prod:prodTab,heads,ent,rep:repTab,set:settings,users}[tab])():'<p class="mu">No rights assigned yet. Please ask the admin.</p>')}
 function prod(){return (can('prod_edit')?'<button class="btn" onclick="editP()">+ Add product</button>':'')+`<div class="tw"><table><tr><th></th><th>Name</th><th>Price</th><th>Stock</th><th>Status</th><th></th></tr>${S.products.map(p=>`<tr style="${p.off?'opacity:.55':''}"><td>${imgOf(p)?`<img class="thumb" src="${imgOf(p)}">`:p.emoji}</td><td>${esc(p.name)}</td><td>${inr(p.price)}</td><td>${p.stock}</td><td>${p.off?'Inactive':'Active'}</td><td>${can('prod_edit')?`<button class="btn o s" onclick="editP(${p.id})">Edit</button> `:''}${can('prod_status')?`<button class="btn o s" onclick="toggleP(${p.id})">${p.off?'Activate':'Deactivate'}</button>`:''}</td></tr>`).join('')}</table></div><p class="mu">Items cannot be deleted. Deactivate an item to hide it from the shop and from new entries; its past sales and reports are kept.</p>`}
 function toggleP(id){if(!can('prod_status'))return;const p=P(id);if(p.off)delete p.off;else p.off=1;ch();render()}
 function users(){return `<p class="mu">Only the admin can create users and change their rights. Download updated index.html and upload it to Netlify so new users work on other devices.</p><button class="btn" onclick="editU()">+ Add user</button><div class="tw"><table><tr><th>Name</th><th>Username</th><th>Status</th><th></th></tr>${(S.users||[]).map(u=>`<tr style="${u.active===false?'opacity:.55':''}"><td>${esc(u.name)}</td><td>${esc(u.user)}</td><td>${u.active===false?'Inactive':'Active'}</td><td><button class="btn o s" onclick="editU('${u.id}')">Rights</button> <button class="btn o s" onclick="toggleU('${u.id}')">${u.active===false?'Activate':'Deactivate'}</button></td></tr>`).join('')||'<tr><td colspan=4 class="mu">No users yet.</td></tr>'}</table></div><h2>Change admin password</h2><input id="np" type="password" placeholder="New admin password (min 6 characters)"><button class="btn" onclick="setAdminPw()">Change password</button>`}
@@ -278,6 +345,8 @@ if(!n||!un)return E1('Name and username are required.');if(un==='admin'||(S.user
 u.name=n;u.user=un;if(pw)u.hash=cy(un+'|'+pw);u.rights={};RIGHTS.forEach(([k])=>{if($('r_'+k).checked)u.rights[k]=1});if(u.isNew){delete u.isNew;(S.users=S.users||[]).push(u)}ch();closeP();render()}
 function toggleU(id){const u=S.users.find(x=>x.id===id);if(u&&me.admin){u.active=u.active===false;ch();render()}}
 function setAdminPw(){const p=$('np').value;if(p.length<6)return alert('Password must be at least 6 characters.');S.cfg.adminHash=cy(p);ch();alert('Admin password changed. Download updated index.html and upload it so it applies everywhere. Keep it safe — it cannot be recovered.')}
+const adminContent=admin;admin=function(){const warning=window.storeSyncError?`<div class="ban" role="alert">Firestore sync issue: ${esc(window.storeSyncError)} <button class="btn s" onclick="retryStoreSync()">Reconnect</button></div>`:'';return warning+adminContent().replace('<p class="mu">Live sync is active.</p>','')};
+const recentContent=recent;recent=function(){let html=recentContent();entList().forEach(entry=>{if(entry.bill){const marker='<b>'+esc(entry.id)+'</b>';html=html.replace(marker,marker+' · Bill '+esc(entry.bill))}});return html.replace('Entries are saved in this browser. Download the Excel report regularly as a backup.',FB?'Entries sync to Firestore across devices. Download the Excel report regularly as a backup.':'Entries are saved in this browser. Download the Excel report regularly as a backup.')};
 function prodTab(){return (can('menu_excel')?`<div class="row" style="flex-wrap:wrap;justify-content:flex-start"><button class="btn s" onclick="exportMenu()">⬇ Export menu (Excel)</button><button class="btn o s" onclick="exportMenu(1)">Blank template</button><label class="btn o s" style="cursor:pointer">⬆ Import menu<input type="file" accept=".xlsx,.xls,.csv" style="display:none" onchange="importMenu(this)"></label></div><p class="mu">Excel columns: Name, Category, Price, MRP, Opening Stock, Emoji, Heading, Status (Active/Inactive). Opening Stock applies only to new items (or items with no entries yet); current stock comes from Entries. Photos are added with Edit.</p>`:'')+prod()}
 function store(){const c=C();return `<h2>Store details</h2><span class="mu">Logo</span><div>${c.logo?`<img src="${c.logo}"	="lazy" decoding="async" style="height:56px;border-radius:8px">`:'<span class="mu">No logo yet</span>'}</div><input type="file" accept="image/*" onchange="upLogo(this)">${c.logo?'<button class="btn o s" onclick="S.cfg.logo=\'\';ch();render()">Remove logo</button>':''}${fld('Store name','name',c)}${fld('Website link (e.g. www.yourshop.com)','web',c)}${fld('Instagram handle (optional)','ig',c)}${fld('Homepage headline','banner',c)}${fld('WhatsApp number for orders (with 91, no +)','wa',c)}`}
 function upLogo(i){const f=i.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,240/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);S.cfg.logo=c.toDataURL('image/png');ch();render()};im.src=r.result};r.readAsDataURL(f)}
@@ -286,8 +355,9 @@ const wurl=w=>/^https?:\/\//i.test(w)?w:'https://'+w;
 function render(){const c=C();document.title=c.name;$('cc').textContent=Object.values(cart).reduce((a,b)=>a+b,0);
 document.querySelector('.logo').innerHTML=(c.logo?`<img src="${c.logo}" alt="" style="height:30px;vertical-align:middle;margin-right:6px;border-radius:6px">`:'✨ ')+esc(c.name);
 $('ft').innerHTML=[c.web?`Visit <a href="${esc(wurl(c.web))}" target="_blank" rel="noopener">${esc(c.web.replace(/^https?:\/\//i,''))}</a>`:'',c.ig?`Instagram <a href="https://instagram.com/${esc(c.ig.replace('@',''))}" target="_blank" rel="noopener">${esc(c.ig)}</a>`:''].filter(Boolean).join(' · ');
-const b=$('admBtn');b.style.display=isAdmin?'':'none';b.textContent=view==='admin'?'← View shop':'⚙ Admin';b.onclick=()=>{view=view==='admin'?'shop':'admin';render();scrollTo(0,0)};
-$('app').innerHTML=view==='orders'?ordersPage():view==='order'?orderPage():view==='shop'||!isAdmin?shop():admin()}
+const b=$('admBtn');b.style.display=isAdmin?'':'none';b.textContent=view==='admin'?'View shop':'Admin';b.onclick=()=>view==='admin'?navigate('/'):navigate('/admin/products');
+if(routePage==='checkout'){checkout();return}
+$('app').innerHTML=routePage==='product'?productPage(routeProduct):routePage==='cart'?cartPage():routePage==='orders'?ordersPage():routePage==='order'?orderPage():routePage==='admin'?(me?admin():`<section class="route-message"><h1>Store administration</h1><p>Sign in to manage products, orders, and store settings.</p><button class="btn" onclick="unlock()">Admin sign in</button></section>`):shop()}
 /* ===== v3: up to 5 photos per item, description, preview, banner slider ===== */
 let FB=false,STALE=false;const FBX={};
 const MAXI=5,imgsOf=p=>p.imgs&&p.imgs.length?p.imgs:(p.img?[p.img]:[]);
@@ -296,7 +366,7 @@ let pvI=0;
 function hero(){const c=C(),im=c.hero||[];return `<div class="hero ${im.length?'hasimg':''}">${im.length?`<div class="hs" id="hs">${im.map((u,i)=>`<img src="${u}" class="${i?'':'on'}" alt="">`).join('')}</div>`:''}<div class="ht"><h1>${esc(c.banner)}</h1><div>Free shipping above ${inr(c.freeAbove)} · UPI · COD available</div></div></div>`}
 function slide(){const h=document.getElementById('hs');if(!h||h.children.length<2)return;const a=[...h.children],i=a.findIndex(x=>x.classList.contains('on'));a[i].classList.remove('on');a[(i+1)%a.length].classList.add('on')}
 setInterval(slide,3500);
-function card(p){return `<div class="card" onclick="preview(${p.id})"><div class="img">${pic(p)}${p.stock<=5&&p.stock>0?`<span class="tag">Only ${p.stock} left</span>`:p.sec==='trend'?'<span class="tag">🔥 Trending</span>':''}</div><div class="info"><b>${esc(p.name)}</b><div class="pr"><b style="display:inline">${inr(p.price)}</b><s>${inr(p.mrp)}</s></div><button class="btn s" ${p.stock<1?'disabled':''} onclick="event.stopPropagation();preview(${p.id})">${p.stock<1?'Sold out':'View & add'}</button></div></div>`}
+function card(p){return `<a class="card product-card" href="${productUrl(p)}" onclick="routeLink(event,'${productUrl(p)}')"><div class="img">${pic(p)}${p.stock<=5&&p.stock>0?`<span class="tag">Only ${p.stock} left</span>`:p.sec==='trend'?'<span class="tag">Trending</span>':''}</div><div class="info"><b>${esc(p.name)}</b><div class="pr"><b style="display:inline">${inr(p.price)}</b><s>${inr(p.mrp)}</s></div><span class="btn s">View product</span></div></a>`}
 function shop(){const l=S.products.filter(p=>!p.off&&(cat==='All'||p.cat===cat));
 return hero()+S.sections.map(s=>{const t=S.products.filter(p=>p.sec===s.id&&!p.off);return t.length?`<h2>${esc(s.title)}</h2><div class="grid">${t.map(card).join('')}</div>`:''}).join('')+`<h2>${esc(C().allTitle)}</h2><div class="chips">${cats().map(c=>`<span class="chip ${c===cat?'on':''}" onclick="cat='${c}';render()">${c}</span>`).join('')}</div><div class="grid">${l.map(card).join('')||'<p class="mu">Nothing here yet.</p>'}</div>`}
 function preview(id,i){const p=P(id);if(!p)return;pvI=i||0;const im=imgsOf(p);
@@ -326,7 +396,7 @@ function rmHero(i){const c=C();c.hero=(c.hero||[]).slice();c.hero.splice(i,1);ch
 function store(){const c=C();return `<h2>Store details</h2><span class="mu">Logo</span><div>${c.logo?`<img src="${c.logo}" style="height:56px;border-radius:8px" alt="">`:'<span class="mu">No logo yet</span>'}</div><input type="file" accept="image/*" onchange="upLogo(this)">${c.logo?'<button class="btn o s" onclick="S.cfg.logo=\'\';ch();render()">Remove logo</button>':''}
 <h2>Homepage banner images (up to ${MAXI})</h2><div id="himgs" class="th2">${heroMgr()}</div><div id="himsg" class="mu" style="color:#e03131"></div><div class="mu">They slide behind your headline on the home page.</div>
 ${fld('Store name','name',c)}${fld('Website link (e.g. www.yourshop.com)','web',c)}${fld('Instagram handle (optional)','ig',c)}${fld('Homepage headline','banner',c)}${fld('WhatsApp number for orders (with 91, no +)','wa',c)}`}
-function closeP(){$('panel').classList.remove('on');TU.forEach(f=>f());TU=[];if(STALE){STALE=false;if(FBX.apply)FBX.apply()}}
+function closeP(){if(routePage==='checkout'){navigate('/cart');return}$('panel').classList.remove('on');TU.forEach(f=>f());TU=[];if(STALE){STALE=false;if(FBX.apply)FBX.apply()}}
 
 /* ===== v4: checkout screen, Razorpay, UPI apps, product table ===== */
 let CK={pm:'',sh:'std',edit:false,n:'',ph:'',ad:'',pin:''};
@@ -335,16 +405,16 @@ const PSUB={upi:'Google Pay · PhonePe · Paytm · BHIM',card:'Visa · Mastercar
 const payOpts=()=>{const c=C();return ['upi','card','nb','wallet','cod'].filter(k=>(c.pay||{})[k]&&(k==='upi'||k==='cod'||c.rzpKey))};
 function bill(){const c=C(),sub=subtotal(),m=CK.pm,ship=sub?shipFee(CK.sh):0,cod=m==='cod'?(+c.codFee||0):0,disc=m&&m!=='cod'?Math.min(+c.discOnline||0,sub):0,gst=Math.round((sub-disc)*(+c.gst||0)/100);return{sub,ship,cod,disc,gst,total:sub+ship+cod-disc+gst}}
 const addrOk=()=>CK.n.trim()&&/^\d{10}$/.test(CK.ph.trim())&&CK.ad.trim()&&/^\d{6}$/.test(CK.pin.trim());
-function openCart(){if(!Object.keys(cart).length){openP('<h2>Your cart</h2><p class="mu">Your cart is empty.</p><button class="btn o" style="width:100%" onclick="closeP()">Close</button>');return}checkout()}
+function openCart(){goCart()}
 function saveAddr(){const x=$('coerr');if(!addrOk()){x.textContent='Please fill name, 10-digit mobile, address and 6-digit pincode.';return}CK.edit=false;try{localStorage.setItem('gn_addr',JSON.stringify({n:CK.n,ph:CK.ph,ad:CK.ad,pin:CK.pin}))}catch(e){}checkout()}
-function checkout(){const c=C(),opts=payOpts();if(!opts.includes(CK.pm))CK.pm=opts[0]||'';const b=bill(),e=Object.entries(cart),ok=addrOk()&&!CK.edit,online=CK.pm&&CK.pm!=='cod';
+function checkout(){const c=C(),opts=payOpts();if(!opts.includes(CK.pm))CK.pm=opts[0]||'';const b=bill(),e=Object.entries(cart).filter(([id,q])=>P(id)&&q>0),ok=addrOk()&&!CK.edit,online=CK.pm&&CK.pm!=='cod';
 openP(`<div class="coh"><button class="bk" onclick="closeP()">←</button><b>Checkout</b></div>
 <div class="cos"><div class="cot">📍 DELIVERY ADDRESS</div>${ok?`<div><b>${esc(CK.n)}</b><br>${esc(CK.ad)}<br>PIN ${esc(CK.pin)}<br>📞 ${esc(CK.ph)}</div><button class="lnk" onclick="CK.edit=true;checkout()">CHANGE</button>`:`<input placeholder="Full name" value="${esc(CK.n)}" oninput="CK.n=this.value"><input placeholder="Mobile number (10 digits)" inputmode="numeric" value="${esc(CK.ph)}" oninput="CK.ph=this.value"><input placeholder="House no, street, city, state" value="${esc(CK.ad)}" oninput="CK.ad=this.value"><input placeholder="Pincode (6 digits)" inputmode="numeric" value="${esc(CK.pin)}" oninput="CK.pin=this.value"><button class="btn s" onclick="saveAddr()">Save address</button>`}
 <label class="pay"><input type="radio" name="sh" ${CK.sh==='std'?'checked':''} onchange="CK.sh='std';checkout()">🚚 Standard delivery (${shipFee('std')?inr(shipFee('std')):'FREE'})</label><label class="pay"><input type="radio" name="sh" ${CK.sh==='exp'?'checked':''} onchange="CK.sh='exp';checkout()">⚡ Express delivery (${inr(c.expFee)})</label></div>
-<div class="cos"><div class="cot">🛒 YOUR CART</div>${e.map(([i,q])=>`<div class="row"><span>${esc(P(i).name)}<div class="mu">${inr(P(i).price)} each</div></span><span><button class="btn o s" onclick="qty(${i},-1)">−</button> ${q} <button class="btn o s" onclick="qty(${i},1)">+</button> <b>${inr(P(i).price*q)}</b></span></div>`).join('')}<button class="lnk" onclick="closeP()">+ Add more items</button></div>
+<div class="cos"><div class="cot">🛒 YOUR CART</div>${e.length?e.map(([i,q])=>`<div class="row"><span>${esc(P(i).name)}<div class="mu">${inr(P(i).price)} each</div></span><span><button class="btn o s" onclick="qty(${i},-1)">−</button> ${q} <button class="btn o s" onclick="qty(${i},1)">+</button> <b>${inr(P(i).price*q)}</b></span></div>`).join(''):'<p class="mu">No available products in this cart. Return to the shop to choose current items.</p>'}<button class="lnk" onclick="closeP()">+ Add more items</button></div>
 <div class="cos"><div class="cot">💳 PAYMENT METHOD</div>${opts.map(k=>`<label class="pay"><input type="radio" name="pm" ${CK.pm===k?'checked':''} onchange="CK.pm='${k}';checkout()"><span><b>${PM[k]}</b><div class="mu">${PSUB[k]}${k==='cod'&&c.codFee?' (+'+inr(c.codFee)+' fee)':''}${k!=='cod'&&+c.discOnline?' · Save '+inr(c.discOnline):''}</div></span></label>`).join('')||'<p class="mu">No payment method is available right now.</p>'}</div>
 <div class="cos" style="border:0"><div class="cot">BILL SUMMARY</div><div class="bl"><span>Item total</span><span>${inr(b.sub)}</span></div><div class="bl"><span>Delivery fee</span><span>${b.ship?inr(b.ship):'FREE'}</span></div>${b.cod?`<div class="bl"><span>COD fee</span><span>${inr(b.cod)}</span></div>`:''}${b.disc?`<div class="bl"><span>Discount</span><span>−${inr(b.disc)}</span></div>`:''}${b.gst?`<div class="bl"><span>GST (${+c.gst}%)</span><span>${inr(b.gst)}</span></div>`:''}<div class="bl t"><span>TOTAL</span><span>${inr(b.total)}</span></div></div>
-<div id="coerr" class="mu" style="color:#e03131"></div><button class="btn" style="width:100%;margin-top:6px" ${opts.length?'':'disabled'} onclick="place()">${online?'PAY':'PLACE ORDER'} ${inr(b.total)}</button>${online&&c.rzpKey?'<div class="mu" style="text-align:center;margin-top:6px">🔒 Secure payment by Razorpay</div>':''}`)}
+<div id="coerr" class="mu" style="color:#e03131"></div><button class="btn" style="width:100%;margin-top:6px" ${opts.length&&e.length?'':'disabled'} onclick="place()">${online?'PAY':'PLACE ORDER'} ${inr(b.total)}</button>${online&&c.rzpKey?'<div class="mu" style="text-align:center;margin-top:6px">🔒 Secure payment by Razorpay</div>':''}`)}
 function loadRzp(){return new Promise((ok,no)=>{if(window.Razorpay)return ok();const s=document.createElement('script');s.src='https://checkout.razorpay.com/v1/checkout.js';s.onload=ok;s.onerror=()=>no(new Error('x'));document.head.appendChild(s)})}
 async function rzpPay(T,id,m,fin,er){try{await loadRzp()}catch(e){return er('Could not open the payment window. Check your internet and try again.')}
 const rz=new Razorpay({key:C().rzpKey,amount:Math.round(T*100),currency:'INR',name:C().name,description:'Order '+id,prefill:{name:CK.n,contact:CK.ph,method:{upi:'upi',card:'card',nb:'netbanking',wallet:'wallet'}[m]},notes:{order:id,address:CK.ad+' - '+CK.pin},theme:{color:'#d6336c'},handler:r=>fin(r.razorpay_payment_id),modal:{ondismiss:()=>er('Payment was cancelled. You can try again.')}});
@@ -426,7 +496,7 @@ ${show.map(oCard).join('')||`<p class="mu">${oTab==='active'?'You have no active
 async function findOrder(){const id=$('fo_id').value.trim().toUpperCase(),ph=$('fo_ph').value.trim(),r=$('fo_res');if(!FB){r.textContent='Order lookup works when the shop is online.';return}r.textContent='Checking…';
 try{const d=await FBX.lookup(id);if(!d||d.ph!==cy(ph)){r.innerHTML='<span style="color:#e03131">Order not found. Please check the Order ID and mobile number.</span>';return}myAdd(id,ph);TRK[id]=d;goOrder(id)}catch(e){r.textContent='Could not check right now. Please try again.'}}
 /* Order summary page with live tracker */
-function orderPage(){const id=curOrd;if(!id||!(ORD[id]||TRK[id]||MY.some(x=>x.id===id)))return `<div class="coh"><button class="bk" onclick="goOrders()">←</button><b>Order not found</b></div><p class="mu">We could not find this order on this phone.</p>`;
+function orderPage(){const id=curOrd;if(!id||!(ORD[id]||TRK[id]||MY.some(x=>x.id===id)))return `<nav class="crumb"><a href="/orders" onclick="routeLink(event,'/orders')">Your orders</a> / Track order</nav><section class="route-message"><h1>Track your order</h1><p class="mu">Enter the order ID and the mobile number used at checkout.</p><input id="fo_id" value="${esc(id)}" placeholder="Order ID"><input id="fo_ph" placeholder="Mobile number used for the order" inputmode="numeric"><button class="btn" onclick="findOrder()">Find order</button><div id="fo_res" class="mu"></div></section>`;
 const o=ordData(id),st=o.status,items=Array.isArray(o.items)?o.items:null,sub=items?items.reduce((a,i)=>a+i.q*i.price,0):0;
 return `<div class="coh"><button class="bk" onclick="goOrders()">←</button><b>Order ${esc(id)}</b></div>
 ${justPlaced===id?'<div class="ban" style="background:#ebfbee;color:#1b5e20">🎉 Thank you! Your order has been placed.</div>':''}
@@ -436,8 +506,8 @@ ${o.addr?`<div class="cos"><div class="cot">DELIVERY ADDRESS</div><b>${esc(o.cus
 ${o.pm||o.mode?`<div class="cos"><div class="cot">PAYMENT</div>${esc(o.pm||o.mode)}${o.payId?`<br><span class="mu">Payment ID: ${esc(o.payId)}</span>`:''}</div>`:''}
 <a class="btn wa" style="display:block;text-align:center;text-decoration:none;margin-top:10px" target="_blank" rel="noopener" href="https://wa.me/${waPhone(C().wa)}?text=${encodeURIComponent('Hi, I need help with my order '+id)}">💬 Message us about this order</a><button class="btn o" style="width:100%;margin-top:8px" onclick="goOrders()">← All my orders</button>`}
 /* placing orders (ID is assigned when the order is saved) */
-function afterOrder(o,m,payId,msg){justPlaced=o.id;view='order';curOrd=o.id;render();scrollTo(0,0);startOW();success(o.id,o.total,m,msg,payId)}
-function recordOrder(o,m,payId){if(FB){FBX.order(o,m,payId);return}o.id=localId('sale');o.ref=o.id;saveOrder(o);myAdd(o.id,o.phone);cart={};afterOrder(o,m,payId,orderMsg(o,payId))}
+function afterOrder(o,m,payId,msg){justPlaced=o.id;view='order';curOrd=o.id;navigate('/orders/'+encodeURIComponent(o.id));startOW();success(o.id,o.total,m,msg,payId)}
+function recordOrder(o,m,payId){if(FB){FBX.order(o,m,payId);return}o.id=localId('sale');o.ref=o.id;saveOrder(o);myAdd(o.id,o.phone);cart={};saveCart();afterOrder(o,m,payId,orderMsg(o,payId))}
 async function rzpPay(T,m,fin,er){try{await loadRzp()}catch(e){return er('Could not open the payment window. Check your internet and try again.')}
 const rz=new Razorpay({key:C().rzpKey,amount:Math.round(T*100),currency:'INR',name:C().name,description:'Order at '+C().name,prefill:{name:CK.n,contact:CK.ph,method:{upi:'upi',card:'card',nb:'netbanking',wallet:'wallet'}[m]},notes:{customer:CK.n,address:CK.ad+' - '+CK.pin},theme:{color:'#d6336c'},handler:r=>fin(r.razorpay_payment_id),modal:{ondismiss:()=>er('Payment was cancelled. You can try again.')}});
 rz.on('payment.failed',r=>er('Payment failed: '+((r.error&&r.error.description)||'please try again.')));rz.open()}
@@ -459,7 +529,50 @@ if(n<=mx){m.textContent='Numbers up to '+mx+' are already used. Choose '+(mx+1)+
 openP(`<h2>Change the next order number?</h2><p>The next order will be <b>${esc(idFor('sale',n))}</b>. Orders already placed keep their IDs.</p><button class="btn" style="width:100%" onclick="idDo(${n})">Yes, apply</button><button class="btn o" style="width:100%;margin-top:6px" onclick="closeP()">Cancel</button>`)}
 async function idDo(n){C().idStart=n;ch();if(FB)await FBX.setSeq(n);else{const s=LS('gn_seq',{});s.sale=n-1;LSet('gn_seq',s)}closeP();render()}
 
-render();
+let routePage='shop',routeProduct='',productImage=0;
+const ADMIN_ROUTES={products:'prod',headings:'heads',entries:'ent',reports:'rep',settings:'set',users:'users'},ADMIN_PATHS={prod:'products',heads:'headings',ent:'entries',rep:'reports',set:'settings',users:'users'};
+const slugify=s=>String(s||'').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const productUrl=p=>'/products/'+p.id+'-'+slugify(p.name);
+const adminPath=k=>'/admin/'+(ADMIN_PATHS[k]||'products');
+function saveCart(){try{localStorage.setItem('gn_cart',JSON.stringify(cart))}catch(e){}}
+function navigate(path){if(location.pathname!==path)history.pushState({},'',path);syncRoute()}
+function routeLink(event,path){if(event)event.preventDefault();navigate(path)}
+function syncRoute(){const path=decodeURIComponent(location.pathname.replace(/\/+$/,'')||'/'),parts=path.split('/').filter(Boolean);routeProduct='';
+  if(path==='/'){routePage='shop';view='shop'}
+  else if(parts[0]==='products'&&parts[1]){routePage='product';routeProduct=parts[1].match(/^\d+/)?.[0]||'';view='shop'}
+  else if(path==='/cart'){routePage='cart';view='shop'}
+  else if(path==='/checkout'||path==='/payment'){routePage='checkout';view='shop';if(!Object.keys(cart).length){history.replaceState({},'','/cart');routePage='cart'}}
+  else if(path==='/orders'){routePage='orders';view='orders';curOrd='';startOW()}
+  else if(parts[0]==='orders'&&parts[1]){routePage='order';view='order';curOrd=parts.slice(1).join('/');startOW()}
+  else if(parts[0]==='admin'){routePage='admin';view='admin';tab=ADMIN_ROUTES[parts[1]]||'prod'}
+  else{routePage='notFound';view='shop'}
+  render();scrollTo(0,0);
+  if(routePage==='admin'&&!me&&!document.getElementById('panel').classList.contains('on'))setTimeout(()=>{if(routePage==='admin'&&!me)unlock()},100)
+}
+addEventListener('popstate',syncRoute);
+function goCart(){navigate('/cart')}
+function goCheckout(){navigate('/checkout')}
+function adminTab(k){tab=k;navigate(adminPath(k))}
+function goProduct(id){const p=P(id);if(p)navigate(productUrl(p))}
+function productPage(id){const p=P(id);if(!p||p.off)return `<nav class="crumb"><a href="/" onclick="routeLink(event,'/')">Shop</a> / Product unavailable</nav><section class="route-message"><h1>Product unavailable</h1><a class="btn" href="/" onclick="routeLink(event,'/')">Back to shop</a></section>`;
+  const images=imgsOf(p),main=images[productImage]||images[0],saved=cart[p.id]||0,related=[];
+  [S.products.filter(x=>x.cat===p.cat),S.products.filter(x=>x.sec&&x.sec===p.sec),S.products].forEach(group=>group.forEach(candidate=>{if(!candidate.off&&candidate.id!==p.id&&!related.some(item=>item.id===candidate.id)&&related.length<4)related.push(candidate)}));
+  document.title=esc(p.name)+' | '+esc(C().name);let meta=document.querySelector('meta[name="description"]');if(!meta){meta=document.createElement('meta');meta.name='description';document.head.appendChild(meta)}meta.content=(p.desc||p.name+' from '+C().name).slice(0,155);
+  return `<nav class="crumb"><a href="/" onclick="routeLink(event,'/')">Shop</a> / ${esc(p.cat)} / ${esc(p.name)}</nav><div class="product-detail"><div class="product-gallery"><div class="product-main-image">${main?`<img src="${main}" alt="${esc(p.name)}" fetchpriority="high">`:`<span>${esc(p.emoji||'')}</span>`}</div>${images.length>1?`<div class="th product-thumbs">${images.map((u,i)=>`<button class="${i===productImage?'on':''}" aria-label="View product image ${i+1}" onclick="productImage=${i};render()"><img src="${u}" alt=""></button>`).join('')}</div>`:''}</div><section class="product-copy"><p class="eyebrow">${esc(p.cat)}</p><h1>${esc(p.name)}</h1><div class="detail-price"><b>${inr(p.price)}</b>${p.mrp>p.price?`<s>${inr(p.mrp)}</s><span>Save ${inr(p.mrp-p.price)}</span>`:''}</div><p class="stock-note ${p.stock>0?'':'out'}">${p.stock>0?(p.stock<=5?'Only '+p.stock+' remaining':'In stock'):'Currently unavailable'}</p>${p.desc?`<p class="product-description">${esc(p.desc)}</p>`:'<p class="product-description">Description coming soon.</p>'}<div class="product-actions"><button class="btn" ${p.stock<1?'disabled':''} onclick="add(${p.id})">Add to cart</button>${saved?`<span class="mu">${saved} in your cart</span>`:''}</div><div class="product-policies"><div><b>Delivery</b><span>Free standard shipping over ${inr(C().freeAbove)}</span></div><div><b>Payment</b><span>Secure online payment and available payment options at checkout</span></div></div></section></div>${related.length?`<section class="recommendations"><h2>You may also like</h2><div class="grid">${related.map(card).join('')}</div></section>`:''}`}
+function cartPage(){const entries=Object.entries(cart).filter(([id,q])=>P(id)&&q>0),items=entries.map(([id,q])=>`<div class="cart-line"><a class="cart-product" href="${productUrl(P(id))}" onclick="routeLink(event,'${productUrl(P(id))}')">${imgOf(P(id))?`<img src="${imgOf(P(id))}" alt="">`:esc(P(id).emoji||'')}<span><b>${esc(P(id).name)}</b><small>${inr(P(id).price)} each</small></span></a><div class="qty-control"><button class="btn o s" aria-label="Remove one ${esc(P(id).name)}" onclick="qty(${id},-1)">−</button><span>${q}</span><button class="btn o s" aria-label="Add one ${esc(P(id).name)}" onclick="qty(${id},1)">+</button></div><b>${inr(P(id).price*q)}</b></div>`).join('');
+  return `<nav class="crumb"><a href="/" onclick="routeLink(event,'/')">Shop</a> / Cart</nav><h1 class="page-title">Your cart</h1>${entries.length?`<div class="cart-layout"><section class="cart-items">${items}<a class="nav-link continue-link" href="/" onclick="routeLink(event,'/')">Continue shopping</a></section><aside class="cart-summary"><h2>Order summary</h2><div class="bl"><span>Subtotal</span><b>${inr(subtotal())}</b></div><div class="bl"><span>Standard delivery</span><b>${shipFee('std')?inr(shipFee('std')):'Free'}</b></div><div class="bl t"><span>Estimated total</span><b>${inr(subtotal()+shipFee('std'))}</b></div><p class="mu">Final payment options and charges are shown at checkout.</p><button class="btn" onclick="goCheckout()">Continue to checkout</button></aside></div>`:`<section class="route-message"><h2>Your cart is empty</h2><p class="mu">Explore the collection and add something you love.</p><a class="btn" href="/" onclick="routeLink(event,'/')">Explore the shop</a></section>`}`
+function goOrders(){TU.forEach(f=>f());TU=[];justPlaced='';navigate('/orders')}
+function goOrder(id){navigate('/orders/'+encodeURIComponent(id))}
+function goShop(){stopOW();justPlaced='';navigate('/')}
+function openTrack(){goOrders()}
+function render(){const c=C();document.title=routePage==='shop'?c.name+' | Jewellery':c.name+' | '+({cart:'Cart',checkout:'Checkout',orders:'Your orders',order:'Order tracking',admin:'Administration',product:'Product',notFound:'Page not found'}[routePage]||'Shop');$('cc').textContent=Object.values(cart).reduce((a,b)=>a+b,0);
+  document.querySelector('.logo').innerHTML=(c.logo?`<img src="${c.logo}" alt="" style="height:30px;vertical-align:middle;margin-right:6px;border-radius:6px">`:'')+esc(c.name);
+  $('ft').innerHTML=[c.web?`Visit <a href="${esc(wurl(c.web))}" target="_blank" rel="noopener">${esc(c.web.replace(/^https?:\/\//i,''))}</a>`:'',c.ig?`Instagram <a href="https://instagram.com/${esc(c.ig.replace('@',''))}" target="_blank" rel="noopener">${esc(c.ig)}</a>`:''].filter(Boolean).join(' · ');
+  const b=$('admBtn');b.style.display=isAdmin?'':'none';b.textContent=routePage==='admin'?'View shop':'Admin';b.onclick=()=>routePage==='admin'?navigate('/'):navigate('/admin/products');
+  if(routePage==='checkout'){checkout();return}
+  $('app').innerHTML=routePage==='product'?productPage(routeProduct):routePage==='cart'?cartPage():routePage==='orders'?ordersPage():routePage==='order'?orderPage():routePage==='admin'?(me?admin():`<section class="route-message"><h1>Store administration</h1><p>Sign in to manage products, orders, and store settings.</p><button class="btn" onclick="unlock()">Admin sign in</button></section>`):routePage==='notFound'?`<section class="route-message"><h1>Page not found</h1><a class="btn" href="/" onclick="routeLink(event,'/')">Return to shop</a></section>`:shop()}
+}
+syncRoute();
 
 </script>
 <script type="module">
@@ -484,17 +597,20 @@ const ADMIN_EMAIL = "tk6001127@gmail.com";
 const app=initializeApp(firebaseConfig),db=getFirestore(app),auth=getAuth(app),AE=ADMIN_EMAIL.toLowerCase();
 const sj=v=>JSON.stringify(v,(k,x)=>x&&typeof x==='object'&&!Array.isArray(x)?Object.fromEntries(Object.keys(x).sort().map(y=>[y,x[y]])):x);
 const clean=o=>JSON.parse(JSON.stringify(o)),strip=p=>{const d=clean(p);delete d.stock;delete d._st;return d};
-let RP=null,RPM={},RC=null,E_ent=[],E_vis=[],STAFF=[],lastJ={},lastC='',unsubs=[],pushing=false,goAdmin=false,first=true;
+let RP=null,RPM={},RC=null,E_ent=[],E_vis=[],STAFF=[],lastJ={},lastC='',unsubs=[],storeUnsubs=[],pushing=false,goAdmin=false,first=true,retryAfter=0,productsReady=false,configReady=false;
+window.storeSyncError='';window.storeReady=false;window.retryStoreSync=()=>{window.storeSyncError='';retryAfter=0;if(!configReady||!productsReady)watchStore();else{dirty=true;render()}};
 FB=true;document.getElementById('trkBtn').style.display='';
 const busy=()=>{const a=document.activeElement;return document.getElementById('panel').classList.contains('on')||(isAdmin&&a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))};
 
 /* ---- real-time: everyone listens to settings + products ---- */
-onSnapshot(doc(db,'config','shop'),sn=>{if(sn.exists()){RC=sn.data();lastC=sj({cfg:RC.cfg,sections:RC.sections})}apply()},e=>console.warn('config',e.code));
-onSnapshot(collection(db,'products'),sn=>{if(sn.size){RP=sn.docs.map(d=>d.data()).sort((a,b)=>a.id-b.id);RPM={};lastJ={};RP.forEach(p=>{RPM[p.id]=p;lastJ[p.id]=sj(strip(p))})}apply()},e=>console.warn('products',e.code));
+function watchStore(){storeUnsubs.forEach(unsubscribe=>unsubscribe());storeUnsubs=[];configReady=false;productsReady=false;window.storeReady=false;
+  storeUnsubs.push(onSnapshot(doc(db,'config','shop'),sn=>{configReady=true;if(sn.exists()){RC=sn.data();lastC=sj({cfg:RC.cfg,sections:RC.sections})}window.storeReady=configReady&&productsReady;const failed=window.storeSyncError.startsWith('Could not load store settings:');if(failed)window.storeSyncError='';apply();if(failed&&routePage==='admin')render()},e=>{window.storeReady=false;window.storeSyncError='Could not load store settings: '+(e.code||e.message);console.warn('config',e.code);if(routePage==='admin')render()}));
+  storeUnsubs.push(onSnapshot(collection(db,'products'),sn=>{productsReady=true;RP=sn.docs.map(d=>d.data()).sort((a,b)=>a.id-b.id);RPM={};lastJ={};RP.forEach(p=>{RPM[p.id]=p;lastJ[p.id]=sj(strip(p))});window.storeReady=configReady&&productsReady;const failed=window.storeSyncError.startsWith('Could not load products:');if(failed)window.storeSyncError='';apply();if(failed&&routePage==='admin')render()},e=>{window.storeReady=false;window.storeSyncError='Could not load products: '+(e.code||e.message);console.warn('products',e.code);if(routePage==='admin')render()}))}
+watchStore();
 function apply(){
   if(dirty){if(RP)RP.forEach(r=>{const p=S.products.find(x=>x.id===r.id);if(p&&!p._st)p.stock=r.stock});return}
   if(busy()){STALE=true;return}
-  if(RP)S.products=RP.map(clean);
+  if(RP){S.products=RP.map(clean);let removed=false;Object.keys(cart).forEach(id=>{const p=P(id);if(!p||p.off){delete cart[id];removed=true}});if(removed)saveCart()}
   if(RC){S.cfg={...S.cfg,...RC.cfg};S.sections=RC.sections||S.sections}
   fixS();render()}
 FBX.apply=apply;
@@ -507,7 +623,7 @@ function startAdmin(){stopAdmin();
   unsubs.push(onSnapshot(collection(db,'visits'),sn=>{E_vis=sn.docs.map(d=>({id:'VAUTO-'+d.id,type:'visit',d:d.id,count:d.data().count||0,note:'Auto: visitors',by:'Auto',items:[]}));mergeE()},e=>console.warn('visits',e.code)));
   if(me.admin)unsubs.push(onSnapshot(collection(db,'staff'),sn=>{STAFF=sn.docs.map(d=>({...d.data(),email:d.id}));if(view==='admin'&&tab==='users')softRender()},e=>console.warn('staff',e.code)));
   unsubs.push(onSnapshot(doc(db,'counters','seq'),sn=>{SEQ=sn.exists()?sn.data():null;if(!sn.exists()&&me.admin)setDoc(doc(db,'counters','seq'),{sale:(+S.cfg.idStart||1001)-1,purchase:1000,waste:1000,visit:1000}).catch(()=>{});softRender()},e=>console.warn('counters',e.code)));
-  if(me.admin&&!RP)dirty=true; /* first login: upload starter products to Firestore */ }
+}
 function stopAdmin(){unsubs.forEach(u=>u());unsubs=[];SEQ=null;E_ent=[];E_vis=[];E=[];STAFF=[]}
 
 /* ---- login ---- */
@@ -531,7 +647,7 @@ async function pushAll(){
     if(!withStock)delete d.stock;if(JSON.stringify(d).length>950000)throw Error(p.name+': photos are too big for one item. Remove a photo.');
     const r=RPM[p.id]||{};for(const k in r)if(!(k in d)&&k!=='stock')d[k]=deleteField();
     await setDoc(doc(db,'products',String(p.id)),d,{merge:true});lastJ[p.id]=j0;delete p._st}}
-setInterval(async()=>{if(!dirty||pushing||!me)return;pushing=true;dirty=false;try{await pushAll()}catch(e){fbErr(e);STALE=false}pushing=false},1200);
+setInterval(async()=>{if(!dirty||pushing||!me||!configReady||!productsReady||Date.now()<retryAfter)return;pushing=true;const version=editVersion,hadError=!!window.storeSyncError;dirty=false;try{await pushAll();window.storeSyncError='';if(editVersion!==version)dirty=true;if(hadError&&routePage==='admin')render()}catch(e){dirty=true;retryAfter=Date.now()+5000;window.storeSyncError=e.code||e.message||'Firestore write failed';console.error('Store changes were not saved to Firestore:',e);if(routePage==='admin')render()}finally{pushing=false}},1200);
 
 /* ---- entries (sale / purchase / wastage / visitors) ---- */
 FBX.del=async id=>{const e=E_ent.find(x=>x.id===id);if(!e)return alert('Automatic visitor counts cannot be deleted.');
@@ -554,8 +670,8 @@ FBX.add=async e=>{try{const id=await txWrite(e,e.type,e.type==='purchase'?1:-1);
 async function commitOrder(o){const id=await txWrite(o,'sale',-1);o.id=id;
   try{await setDoc(doc(db,'tracks',id),{status:'Placed',ph:cy(o.phone),d:o.d,items:o.items.map(i=>i.name+' ×'+i.q).join(', '),total:o.total,hist:[{s:'Placed',t:Date.now()}]})}catch(x){console.warn('Tracking record not saved ('+x.code+'). Publish the latest firestore.rules.')}
   saveOrder(o);myAdd(id,o.phone);return id}
-FBX.order=async(o,m,payId)=>{try{await commitOrder(o);PEND=PEND.filter(x=>x.o.tmp!==o.tmp);savePend();cart={};afterOrder(o,m,payId,orderMsg(o,payId))}
-  catch(x){if(!PEND.some(p=>p.o.tmp===o.tmp)){PEND.push({o,m,payId});savePend()}cart={};render();const msg=orderMsg({...o,id:'TMP-'+String(o.tmp).toUpperCase()},payId);
+FBX.order=async(o,m,payId)=>{try{await commitOrder(o);PEND=PEND.filter(x=>x.o.tmp!==o.tmp);savePend();cart={};saveCart();afterOrder(o,m,payId,orderMsg(o,payId))}
+  catch(x){if(!PEND.some(p=>p.o.tmp===o.tmp)){PEND.push({o,m,payId});savePend()}cart={};saveCart();render();const msg=orderMsg({...o,id:'TMP-'+String(o.tmp).toUpperCase()},payId);
     openP(`<h2>Almost done</h2><p>We could not record this order online (${esc(x.code||x.message)}).${payId?' Your payment ('+esc(payId)+') was received.':''} Please send it on WhatsApp so we receive it. We will also keep trying to save it.</p><a class="btn wa" style="display:block;text-align:center;text-decoration:none" target="_blank" rel="noopener" href="https://wa.me/${waPhone(C().wa)}?text=${encodeURIComponent(msg)}">Send order on WhatsApp</a><button class="btn o" style="width:100%;margin-top:6px" onclick="FBX.retry('${o.tmp}')">Try saving again</button><button class="btn o" style="width:100%;margin-top:6px" onclick="closeP()">Close</button>`)}};
 FBX.retry=t=>{const p=PEND.find(x=>x.o.tmp===t);if(p)FBX.order(p.o,p.m,p.payId)};
 setTimeout(()=>{PEND.slice().forEach(p=>commitOrder(p.o).then(()=>{PEND=PEND.filter(x=>x.o.tmp!==p.o.tmp);savePend()}).catch(()=>{}))},4000);
@@ -584,6 +700,7 @@ FBX.setStatus=async(id,status,x)=>{const e=E_ent.find(v=>v.id===id);if(!e)return
   catch(err){if(err.code==='permission-denied'){fbErr(err)}else{const el=document.getElementById('o_err');if(el)el.textContent='Could not save: '+(err.code||err.message)}return false}};
 FBX.watch=(id,cb)=>onSnapshot(doc(db,'tracks',id),sn=>cb(sn.exists()?sn.data():null),()=>cb(null));
 FBX.lookup=async id=>{const sn=await getDoc(doc(db,'tracks',id));return sn.exists()?sn.data():null};
+if(routePage==='orders'||routePage==='order')startOW();
 
 /* ---- staff users (admin only) ---- */
 window.users=()=>`<p class="mu">Add staff here. They log in with their email and password and only get the rights you tick.</p><button class="btn" onclick="editU()">+ Add user</button><div class="tw"><table><tr><th>Name</th><th>Email</th><th>Status</th><th></th></tr>${STAFF.map(u=>`<tr style="${u.active===false?'opacity:.55':''}"><td>${esc(u.name||'')}</td><td>${esc(u.email)}</td><td>${u.active===false?'Inactive':'Active'}</td><td><button class="btn o s" onclick="editU('${u.email}')">Rights</button> <button class="btn o s" onclick="toggleU('${u.email}')">${u.active===false?'Activate':'Deactivate'}</button> <button class="btn o s" onclick="resetPw('${u.email}')">Reset password</button></td></tr>`).join('')||'<tr><td colspan=4 class="mu">No staff yet.</td></tr>'}</table></div><h2>Admin login</h2><p class="mu">Admin email: ${esc(ADMIN_EMAIL)}</p><button class="btn o" onclick="resetPw('${ADMIN_EMAIL}')">Send admin password-reset email</button>`;
